@@ -6,6 +6,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
     const data = req.body;
+    console.log("✅ Incoming webhook payload:", data);
     if (!data?.id || !data?.from_number) {
       return res.status(400).json({ error: 'Invalid payload' });
     }
@@ -23,6 +24,7 @@ router.post('/', async (req, res) => {
       },
       { upsert: true }
     );
+    console.log("✅ Call log saved to MongoDB");
 
     res.status(200).send('Call saved');
   } catch (err) {
