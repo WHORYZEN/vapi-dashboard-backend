@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import vapiRoutes from './api/vapi/calls.js';
+import recordingRouter from './api/vapi/recording.js';
 
 dotenv.config();
 const app = express();
