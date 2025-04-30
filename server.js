@@ -1,4 +1,4 @@
-// server.js
+import connectDB from './config/db.js';
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -20,7 +20,7 @@ app.use('/api/vapi/webhook', webhookRouter);
 app.get('/', (req, res) => {
   res.send('Vapi Dashboard Backend Running');
 });
-
+await connectDB();
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
