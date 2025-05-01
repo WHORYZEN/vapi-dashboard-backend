@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const CallLogSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
@@ -6,7 +6,8 @@ const CallLogSchema = new mongoose.Schema({
   duration_seconds: Number,
   timestamp: Date,
   transcript_url: String,
-  audio_url: String
+  audio_url: String,
+  transcript: String
 }, { timestamps: true });
 
-export default mongoose.model('CallLog', CallLogSchema);
+module.exports = mongoose.model('CallLog', CallLogSchema);
