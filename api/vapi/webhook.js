@@ -1,6 +1,6 @@
 import express from 'express';
 import fetch from 'node-fetch'; // ✅ Required to fetch transcript
-import CallLog from '../../models/CallLog.js';
+import CallLog from '../../models/CallLog.cjs';
 
 const router = express.Router();
 
