@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const CallLog = require('../models/CallLog.cjs');
+const CallLog = require('../models/CallLog.js');
 
 dotenv.config();
 
