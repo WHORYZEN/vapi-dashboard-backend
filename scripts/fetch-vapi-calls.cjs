@@ -6,7 +6,6 @@ dotenv.config();
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-const ORG_ID = process.env.VAPI_ORG_ID;
 const API_KEY = process.env.VAPI_API_KEY;
 
 const fetchAndSaveCalls = async () => {
@@ -17,13 +16,14 @@ const fetchAndSaveCalls = async () => {
       headers: {
         Authorization: `Bearer ${API_KEY}`,
         'Content-Type': 'application/json',
+        'Accept-Encoding': 'identity'
       },
     });
 
     const data = await res.json();
 
     if (!Array.isArray(data)) {
-      console.error('Unexpected response:', data);
+      console.error('❌ Unexpected response:', data);
       return;
     }
 
@@ -41,10 +41,10 @@ const fetchAndSaveCalls = async () => {
       );
     }
 
-    console.log('✅ All Vapi calls saved to MongoDB.');
+    console.log(`✅ Saved ${data.length} call(s) to MongoDB`);
     process.exit(0);
   } catch (err) {
-    console.error('❌ Error:', err);
+    console.error('❌ Error:', err.message || err);
     process.exit(1);
   }
 };
