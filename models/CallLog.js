@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+// models/CallLog.js
+import mongoose from 'mongoose';
 
 const CallLogSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
@@ -10,4 +11,5 @@ const CallLogSchema = new mongoose.Schema({
   transcript: String
 }, { timestamps: true });
 
-module.exports = mongoose.model('CallLog', CallLogSchema);
+const CallLog = mongoose.model('CallLog', CallLogSchema);
+export default CallLog; // ✅ Proper ESM export
